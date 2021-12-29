@@ -27,11 +27,13 @@ body {
 .label_left {
   height: 25px;
 }
-.toolbar {
+.toolbar div {
+  padding: 10px;
   display: grid;
   grid-template-columns: 100px 1fr;
+  row-gap: 10px;
 }
-.toolbar label,
+.toolbar > div label,
 input {
   height: 25px;
 }

@@ -5,6 +5,8 @@ let validator = {
     if (prop === 'target') {
       obj.width.value = `${value.offsetWidth}px`;
       obj.height.value = `${value.offsetHeight}px`;
+      if (value.tagName.toLowerCase() == 'input') obj.value.value = vaule.value;
+      else obj.value.value = value.innerHTML;
     }
     // The default behavior to store the value
     obj[prop] = value;
@@ -21,6 +23,8 @@ document.addEventListener('DOMContentLoaded', function (event) {
   var dragable = document.querySelectorAll('[draggable="true"]');
 
   property.width = toolbar.querySelector("input[id='width']");
+  property.height = toolbar.querySelector("input[id='height']");
+  property.value = toolbar.querySelector("input[id='value']");
 
   dragDropHandle(right, dragable);
   propertyHandle(toolbar);
@@ -71,6 +75,9 @@ function propertyHandle(element) {
     .addEventListener('change', (e) => {
       setHeight(e.target.value);
     });
+  element.querySelector("input[id='value']").addEventListener('change', (e) => {
+    setValue(e.target.value);
+  });
 }
 
 function setWidth(width) {
@@ -78,4 +85,9 @@ function setWidth(width) {
 }
 function setHeight(height) {
   property.target.style.height = height;
+}
+function setValue(value) {
+  if (property.target.tagName.toLowerCase() == 'input')
+    property.target.value = value;
+  else property.target.innerHTML = value;
 }

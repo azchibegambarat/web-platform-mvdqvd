@@ -61,11 +61,6 @@ function dragDropHandle(element, dragable) {
   });
 }
 
-function  propertyHandle(){
-  
-  
-}
+function propertyHandle() {}
 
-function setWidth(widthInPx) {
-
-}
+function setWidth(widthInPx) {}

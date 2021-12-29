@@ -4,6 +4,7 @@ let validator = {
   set: function (obj, prop, value) {
     if (prop === 'target') {
       obj.width.value = `${value.offsetWidth}px`;
+      obj.height.value = `${value.offsetHeight}px`;
     }
     // The default behavior to store the value
     obj[prop] = value;
@@ -22,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
   property.width = toolbar.querySelector("input[id='width']");
 
   dragDropHandle(right, dragable);
-  propertyHandle();
+  propertyHandle(toolbar);
 });
 function dragDropHandle(element, dragable) {
   dragable.forEach((x) => {
@@ -61,6 +62,20 @@ function dragDropHandle(element, dragable) {
   });
 }
 
-function propertyHandle() {}
+function propertyHandle(element) {
+  element.querySelector("input[id='width']").addEventListener('change', (e) => {
+    setWidth(e.target.value);
+  });
+  element
+    .querySelector("input[id='height']")
+    .addEventListener('change', (e) => {
+      setHeight(e.target.value);
+    });
+}
 
-function setWidth(widthInPx) {}
+function setWidth(width) {
+  property.target.style.width = width;
+}
+function setHeight(height) {
+  property.target.style.height = height;
+}

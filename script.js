@@ -63,6 +63,7 @@ function dragDropHandle(element, dragable) {
 
 function  propertyHandle(){
   
+  
 }
 
 function setWidth(widthInPx) {
